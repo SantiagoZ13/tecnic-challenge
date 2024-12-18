@@ -7,4 +7,4 @@ import { PurchaseSchema } from './purchase.schema';
     MongooseModule.forFeature([{ name: 'Purchase', schema: PurchaseSchema }]),
   ],
 })
-export class PurchasesModule {}
+export class SalesModule {}
