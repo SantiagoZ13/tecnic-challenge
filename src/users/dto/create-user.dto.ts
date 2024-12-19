@@ -10,11 +10,11 @@ import {
 export class CreateUserDto {
   @IsString({ message: 'El nombre debe ser un string' })
   @IsNotEmpty({ message: 'El nombre de usuario es obligatorio' })
-  @MinLength(6, { message: 'El nombre debe tener más de 6 letras' })
+  @MinLength(4, { message: 'El nombre debe tener más de 6 letras' })
   name: string;
 
-  @IsEmail({}, { message: 'El nombre de usuario es obligatorio' })
-  @IsNotEmpty({ message: 'El formato del correo no es válido' })
+  @IsEmail({}, { message: 'El formato del correo no es válido' })
+  @IsNotEmpty({ message: 'El correo es obligatorio' })
   email: string;
 
   @IsString({ message: 'La contraseña debe ser un string' })
