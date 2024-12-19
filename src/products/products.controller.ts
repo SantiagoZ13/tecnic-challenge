@@ -1,4 +1,12 @@
-import { Controller, Post, Get, Body, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Get,
+  Body,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
+import { CacheKey, CacheTTL } from '@nestjs/cache-manager';
 import { ProductsService } from './products.service';
 import {
   ApiTags,
@@ -31,6 +39,8 @@ export class ProductsController {
   }
 
   @Get()
+  @CacheKey('products_list')
+  @CacheTTL(60)
   @ApiOperation({ summary: 'Obtener la lista de productos' })
   @ApiResponse({
     status: 200,

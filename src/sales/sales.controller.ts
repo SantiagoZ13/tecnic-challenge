@@ -11,6 +11,7 @@ import { CreateSaleDto } from './dto/create-sale.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { RolesGuard } from '../auth/roles.guard';
 import { Roles } from '../auth/roles.decorator';
+import { CacheKey, CacheTTL } from '@nestjs/cache-manager';
 
 @ApiTags('Sales')
 @ApiBearerAuth()
@@ -29,6 +30,8 @@ export class SalesController {
   }
 
   @Roles('admin')
+  @CacheKey('sales_stats')
+  @CacheTTL(120)
   @Get('stats')
   @ApiOperation({ summary: 'Obtener estadísticas de ventas' })
   @ApiResponse({
