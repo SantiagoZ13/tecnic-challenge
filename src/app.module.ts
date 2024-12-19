@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { SalesModule } from './sales/sales.module';
 import { CacheModule } from '@nestjs/cache-manager';
+import configuration from './config/configuration';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { CacheModule } from '@nestjs/cache-manager';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
+      load: [configuration],
     }),
     MongooseModule.forRoot(process.env.MONGODB_CONNECTION_STRING),
     UsersModule,

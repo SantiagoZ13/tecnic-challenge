@@ -5,9 +5,10 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   const config = new DocumentBuilder()
     .setTitle('Tienda API')
-    .setDescription('API de una tienda con NestJS')
+    .setDescription('prueba técnica, API de una tienda con NestJS')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
